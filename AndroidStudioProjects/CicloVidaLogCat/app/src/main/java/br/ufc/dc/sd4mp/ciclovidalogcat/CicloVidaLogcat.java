@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class CicloVidaLogcat extends ActionBarActivity {
@@ -78,5 +79,9 @@ public class CicloVidaLogcat extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void startActivityExplicita(View view) {
+
     }
 }
