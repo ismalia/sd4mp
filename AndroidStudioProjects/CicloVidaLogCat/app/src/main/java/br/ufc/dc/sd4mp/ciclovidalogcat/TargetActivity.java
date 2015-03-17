@@ -1,6 +1,5 @@
 package br.ufc.dc.sd4mp.ciclovidalogcat;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,14 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class CicloVidaLogcat extends ActionBarActivity {
+public class TargetActivity extends ActionBarActivity {
 
     private static String CATEGORY = "CicloVida";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ciclo_vida_logcat);
+        setContentView(R.layout.activity_target);
         Log.i(CATEGORY, getClassName() + ".onCreate() ---> Created");
     }
 
@@ -57,13 +56,13 @@ public class CicloVidaLogcat extends ActionBarActivity {
     }
 
     private String getClassName() {
-        return CicloVidaLogcat.class.getName();
+        return TargetActivity.class.getName();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ciclo_vida_logcat, menu);
+        getMenuInflater().inflate(R.menu.menu_target, menu);
         return true;
     }
 
@@ -82,15 +81,7 @@ public class CicloVidaLogcat extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void startActivityExplicita(View view) {
-        Intent explicitIntent = new Intent(CicloVidaLogcat.this, TargetActivity.class);
-        startActivity(explicitIntent);
-    }
-
-    public void startActivityImplicita(View view) {
-        Intent implicitIntent = new Intent();
-        implicitIntent.setAction("br.ufc.dc.sd4mp.action.ACAO");
-        implicitIntent.addCategory("br.ufc.dc.sd4mp.category.PADRAO");
-        startActivity(implicitIntent);
+    public void voltar(View view) {
+        this.finish();
     }
 }
