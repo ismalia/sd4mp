@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Formulário para Reserva de Laboratório</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="identificao">Identificação</string>
+    <string name="dadosReserva">Dados da Reserva</string>
+
+    <string name="nomeProf">Nome do professor</string>
+    <string name="siape">SIAPE</string>
+    <string name="email">E-mail</string>
+    <string name="dataReserva">Data da reserva</string>
+    <string name="horarioReserva">Horário da reserva</string>
+    <string name="selecioneLab">Selecione o laboratório</string>
+
+    <string name="nomeProfHint">Digite o seu nome</string>
+    <string name="siapeHint">Digite o seu SIAPE</string>
+    <string name="emailHint">Digite o seu e-mail</string>
+</resources>
