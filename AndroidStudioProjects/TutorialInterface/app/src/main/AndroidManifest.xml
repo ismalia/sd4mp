@@ -14,6 +14,13 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="br.ufc.dc.sd4mp.action.ACTION_SEND" />
+                <extra android:name="br.ufc.dc.sd4mp.extra.EXTRA_SUBJECT" />
+                <extra android:name="br.ufc.dc.sd4mp.extra.EXTRA_EMAIL" />
+                <extra android:name="br.ufc.dc.sd4mp.extra.EXTRA_BCC" />
+                <extra android:name="br.ufc.dc.sd4mp.extra.EXTRA_CC" />
+                <extra android:name="br.ufc.dc.sd4mp.extra.EXTRA_TEXT" />
             </intent-filter>
         </activity>
     </application>

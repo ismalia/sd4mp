@@ -1,9 +1,13 @@
 package br.ufc.dc.sd4mp.tutorialinterface;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class Reserva extends Activity {
@@ -12,8 +16,23 @@ public class Reserva extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reserva);
+
+        // Povoamento do spinner de laboratórios
+        Spinner spinner = (Spinner) findViewById(R.id.labSpinner);
+        String[] laboratorios = getResources().getStringArray(R.array.labs);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, laboratorios);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
+    public void send(View view) {
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[] {"ismaliadulce@gmail.com"});
+        email.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
+        email.putExtra(Intent.EXTRA_TEXT, "Email body");
+        email.setType("plain/text");
+        startActivity(Intent.createChooser(email, "Sending mail..."));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

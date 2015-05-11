@@ -3,7 +3,9 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Reserva">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Reserva"
+    android:fillViewport="false"
+    android:id="@+id/scrollView">
 
     <LinearLayout
         android:orientation="vertical"
@@ -100,6 +102,109 @@
             android:layout_height="wrap_content"
             android:text="@string/selecioneLab"
             android:id="@+id/selecioneLabTextView" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/labSpinner"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/precisaDatashow"
+            android:id="@+id/precisaDatashowTextView" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sim"
+            android:id="@+id/simRadioButton"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nao"
+            android:id="@+id/naoRadioButton"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/talvez"
+            android:id="@+id/talvezRadioButton"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/configuracaoDesejada"
+            android:id="@+id/configDesejadaTextView" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/androidStudioSDK"
+            android:id="@+id/androidStudioSDKCheckBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/javaSDK"
+            android:id="@+id/javaSDKCheckBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linux"
+            android:id="@+id/linuxCheckBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/windows"
+            android:id="@+id/windowsCheckBox"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reservaPrioritaria"
+            android:id="@+id/reservaPrioritariaTextView" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reservaPrioritaria"
+            android:id="@+id/toggleButton"
+            android:layout_gravity="right"
+            android:checked="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/observacao"
+            android:id="@+id/textView" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/observacaoEditText"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/enviarImageButton"
+            android:layout_gravity="center_horizontal"
+            android:src="@android:drawable/ic_menu_send"
+            android:onClick="send" />
 
 
     </LinearLayout>
