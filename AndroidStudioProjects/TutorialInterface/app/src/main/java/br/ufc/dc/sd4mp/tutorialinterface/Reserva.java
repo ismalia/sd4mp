@@ -7,7 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+import android.widget.ToggleButton;
 
 
 public class Reserva extends Activity {
@@ -26,10 +31,23 @@ public class Reserva extends Activity {
     }
 
     public void send(View view) {
+        EditText nomeProfEditText = (EditText) findViewById(R.id.nomeProfEditText);
+//        EditText siape = (EditText) findViewById(R.id.siapeEditText);
+//        EditText emailProfessor = (EditText) findViewById(R.id.emailEditText);
+//        DatePicker dataReserva = (DatePicker) findViewById(R.id.datePicker);
+//        TimePicker horarioReserva = (TimePicker) findViewById(R.id.timePicker);
+//        Spinner laboratorio = (Spinner) findViewById(R.id.labSpinner);
+//        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+//        ToggleButton reservaPrioritaria = (ToggleButton) findViewById(R.id.toggleButton);
+//        EditText observacao = (EditText) findViewById(R.id.observacaoEditText);
+
+        String nomeProf = nomeProfEditText.getText().toString();
+
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[] {"ismaliadulce@gmail.com"});
         email.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
-        email.putExtra(Intent.EXTRA_TEXT, "Email body");
+        email.putExtra(Intent.EXTRA_TEXT, "Identificação\n\n" +
+                                          "Nome do professor: " + nomeProf);
         email.setType("plain/text");
         startActivity(Intent.createChooser(email, "Sending mail..."));
     }

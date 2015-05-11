@@ -115,26 +115,32 @@
             android:text="@string/precisaDatashow"
             android:id="@+id/precisaDatashowTextView" />
 
-        <RadioButton
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sim"
-            android:id="@+id/simRadioButton"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nao"
-            android:id="@+id/naoRadioButton"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/talvez"
-            android:id="@+id/talvezRadioButton"
-            android:checked="false" />
+            android:orientation="vertical"
+            android:id="@+id/radioGroup">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sim"
+                android:id="@+id/simRadioButton"
+                android:checked="false" />
+    
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nao"
+                android:id="@+id/naoRadioButton"
+                android:checked="false" />
+    
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/talvez"
+                android:id="@+id/talvezRadioButton"
+                android:checked="false" />
+        </RadioGroup>
 
         <TextView
             android:layout_width="wrap_content"
