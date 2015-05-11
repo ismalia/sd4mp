@@ -32,22 +32,40 @@ public class Reserva extends Activity {
 
     public void send(View view) {
         EditText nomeProfEditText = (EditText) findViewById(R.id.nomeProfEditText);
-//        EditText siape = (EditText) findViewById(R.id.siapeEditText);
-//        EditText emailProfessor = (EditText) findViewById(R.id.emailEditText);
-//        DatePicker dataReserva = (DatePicker) findViewById(R.id.datePicker);
-//        TimePicker horarioReserva = (TimePicker) findViewById(R.id.timePicker);
-//        Spinner laboratorio = (Spinner) findViewById(R.id.labSpinner);
+        EditText siapeEditText = (EditText) findViewById(R.id.siapeEditText);
+        EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
+        DatePicker dataReservaEditText = (DatePicker) findViewById(R.id.datePicker);
+        TimePicker horarioReservaEditText = (TimePicker) findViewById(R.id.timePicker);
+        Spinner labsSpinner = (Spinner) findViewById(R.id.labSpinner);
 //        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 //        ToggleButton reservaPrioritaria = (ToggleButton) findViewById(R.id.toggleButton);
 //        EditText observacao = (EditText) findViewById(R.id.observacaoEditText);
 
+        int ano = dataReservaEditText.getYear();
+        int mes = dataReservaEditText.getMonth();
+        int dia = dataReservaEditText.getDayOfMonth();
+
+        int horas = horarioReservaEditText.getCurrentHour();
+        int minutos = horarioReservaEditText.getCurrentMinute();
+
         String nomeProf = nomeProfEditText.getText().toString();
+        String siape = siapeEditText.getText().toString();
+        String emailProf = emailEditText.getText().toString();
+        String dataReserva = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
+        String horarioReserva = Integer.toString(horas) + ":" + Integer.toString(minutos) + "h";
+        String lab = labsSpinner.getSelectedItem().toString();
 
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[] {"ismaliadulce@gmail.com"});
         email.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
         email.putExtra(Intent.EXTRA_TEXT, "Identificação\n\n" +
-                                          "Nome do professor: " + nomeProf);
+                                          "Nome do professor: " + nomeProf + "\n" +
+                                          "SIAPE: " + siape + "\n" +
+                                          "Email: " + emailProf + "\n\n" +
+                                          "Dados da reserva\n\n" +
+                                          "Data da reserva: " + dataReserva + "\n" +
+                                          "Horário da reserva: " + horarioReserva + "\n" +
+                                          "Selecione o laboratório: " + lab);
         email.setType("plain/text");
         startActivity(Intent.createChooser(email, "Sending mail..."));
     }
