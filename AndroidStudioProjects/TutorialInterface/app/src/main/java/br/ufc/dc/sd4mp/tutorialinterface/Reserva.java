@@ -3,10 +3,12 @@ package br.ufc.dc.sd4mp.tutorialinterface;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -32,40 +34,92 @@ public class Reserva extends Activity {
 
     public void send(View view) {
         EditText nomeProfEditText = (EditText) findViewById(R.id.nomeProfEditText);
-        EditText siapeEditText = (EditText) findViewById(R.id.siapeEditText);
-        EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
-        DatePicker dataReservaEditText = (DatePicker) findViewById(R.id.datePicker);
-        TimePicker horarioReservaEditText = (TimePicker) findViewById(R.id.timePicker);
-        Spinner labsSpinner = (Spinner) findViewById(R.id.labSpinner);
-//        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-//        ToggleButton reservaPrioritaria = (ToggleButton) findViewById(R.id.toggleButton);
-//        EditText observacao = (EditText) findViewById(R.id.observacaoEditText);
+        String nomeProf = nomeProfEditText.getText().toString();
 
+        EditText siapeEditText = (EditText) findViewById(R.id.siapeEditText);
+        String siape = siapeEditText.getText().toString();
+
+        EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
+        String emailProf = emailEditText.getText().toString();
+
+        DatePicker dataReservaEditText = (DatePicker) findViewById(R.id.datePicker);
         int ano = dataReservaEditText.getYear();
         int mes = dataReservaEditText.getMonth();
         int dia = dataReservaEditText.getDayOfMonth();
+        String dataReserva = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
 
+        TimePicker horarioReservaEditText = (TimePicker) findViewById(R.id.timePicker);
         int horas = horarioReservaEditText.getCurrentHour();
         int minutos = horarioReservaEditText.getCurrentMinute();
-
-        String nomeProf = nomeProfEditText.getText().toString();
-        String siape = siapeEditText.getText().toString();
-        String emailProf = emailEditText.getText().toString();
-        String dataReserva = Integer.toString(dia) + "/" + Integer.toString(mes) + "/" + Integer.toString(ano);
         String horarioReserva = Integer.toString(horas) + ":" + Integer.toString(minutos) + "h";
+
+        Spinner labsSpinner = (Spinner) findViewById(R.id.labSpinner);
         String lab = labsSpinner.getSelectedItem().toString();
+
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        String precisaDatashow = null;
+        int radioButtonID = radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
+        switch (radioButtonID) {
+            case 0:
+                precisaDatashow = "Sim";
+                break;
+            case 1:
+                precisaDatashow = "Não";
+                break;
+            case 2:
+                precisaDatashow = "Talvez";
+                break;
+        }
+
+        String configuracaoDesejada = "";
+        CheckBox androidCheckBox = (CheckBox) findViewById(R.id.androidStudioSDKCheckBox);
+        CheckBox javaCheckBox = (CheckBox) findViewById(R.id.javaSDKCheckBox);
+        CheckBox linuxCheckBox = (CheckBox) findViewById(R.id.linuxCheckBox);
+        CheckBox windowsCheckBox = (CheckBox) findViewById(R.id.windowsCheckBox);
+        if (androidCheckBox.isChecked()) {
+            configuracaoDesejada = configuracaoDesejada.concat("Android Studio + Android SDK\n");
+        }
+        if (javaCheckBox.isChecked()) {
+            configuracaoDesejada = configuracaoDesejada.concat("Java SDK\n");
+        }
+        if (linuxCheckBox.isChecked()) {
+            configuracaoDesejada = configuracaoDesejada.concat("Sistema Operacional Linux\n");
+        }
+        if (windowsCheckBox.isChecked()) {
+            configuracaoDesejada = configuracaoDesejada.concat("Sistema Operacional Windows\n");
+        }
+
+        ToggleButton reservaPrioritariaButton = (ToggleButton) findViewById(R.id.toggleButton);
+        String reservaPrioritaria = null;
+        if (reservaPrioritariaButton.isChecked()) {
+            reservaPrioritaria = "Sim";
+        }
+        else {
+            reservaPrioritaria = "Não";
+        }
+
+        EditText observacaoEditText = (EditText) findViewById(R.id.observacaoEditText);
+        String observacao = observacaoEditText.getText().toString();
 
         Intent email = new Intent(Intent.ACTION_SEND);
         email.putExtra(Intent.EXTRA_EMAIL, new String[] {"ismaliadulce@gmail.com"});
-        email.putExtra(Intent.EXTRA_SUBJECT, "Email subject");
-        email.putExtra(Intent.EXTRA_TEXT, "Identificação\n\n" +
+        email.putExtra(Intent.EXTRA_SUBJECT, "Formulário para Reserva de Laboratório");
+        email.putExtra(Intent.EXTRA_TEXT, "==========\n" +
+                                          "Identificação\n" +
+                                          "==========\n\n" +
                                           "Nome do professor: " + nomeProf + "\n" +
                                           "SIAPE: " + siape + "\n" +
                                           "Email: " + emailProf + "\n\n" +
-                                          "Dados da reserva\n\n" +
+                                          "==============\n" +
+                                          "Dados da reserva\n" +
+                                          "==============\n\n" +
                                           "Data da reserva: " + dataReserva + "\n" +
                                           "Horário da reserva: " + horarioReserva + "\n" +
-                                          "Selecione o laboratório: " + lab);
+                                          "Selecione o laboratório: " + lab + "\n" +
+                                          "Vai precisar de datashow? " + precisaDatashow + "\n" +
+                                          "Configuração desejada dos computadores:\n" + configuracaoDesejada +
+                                          "Reserva prioritária? " + reservaPrioritaria + "\n" +
+                                          "Observação: " + observacao);
         email.setType("plain/text");
         startActivity(Intent.createChooser(email, "Sending mail..."));
     }
