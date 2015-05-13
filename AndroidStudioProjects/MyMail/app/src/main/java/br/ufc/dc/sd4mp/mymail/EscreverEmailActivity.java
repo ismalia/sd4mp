@@ -60,11 +60,20 @@ public class EscreverEmailActivity extends ActionBarActivity {
         EditText conteudoEditText = (EditText) findViewById(R.id.conteudoEditText);
         String conteudo = conteudoEditText.getText().toString();
 
-        Intent email = new Intent(Intent.ACTION_SEND);
-        email.putExtra(Intent.EXTRA_EMAIL, new String[] {destinatario});
-        email.putExtra(Intent.EXTRA_SUBJECT, assunto);
-        email.putExtra(Intent.EXTRA_TEXT, conteudo);
-        email.setType("plain/text");
-        startActivity(Intent.createChooser(email, "Mandando email..."));
+        if (!destinatario.isEmpty() && !assunto.isEmpty() && !conteudo.isEmpty()) {
+            Intent email = new Intent(Intent.ACTION_SEND);
+            email.putExtra(Intent.EXTRA_EMAIL, new String[]{destinatario});
+            email.putExtra(Intent.EXTRA_SUBJECT, assunto);
+            email.putExtra(Intent.EXTRA_TEXT, conteudo);
+            email.setType("plain/text");
+            startActivity(Intent.createChooser(email, "Mandando email..."));
+        }
+        else {
+            Context context = getApplicationContext();
+            CharSequence texto = "Todos os campos devem ser preenchidos!";
+            int duracao = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, texto, duracao);
+            toast.show();
+        }
     }
 }
