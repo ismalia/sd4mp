@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MyMail</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="escrever">Escrever Email</string>
+    <string name="sair">Sair do MyMail</string>
+
+    <string name="title_activity_escrever_email">EscreverEmailActivity</string>
+
+    <string name="destinatario">Destinatário</string>
+    <string name="assunto">Assunto</string>
+    <string name="conteudo">Conteúdo</string>
+    
+    <string name="destinatarioHint">Endereço de email do destinatário</string>
+</resources>
