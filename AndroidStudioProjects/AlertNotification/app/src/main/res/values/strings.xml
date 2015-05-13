@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AlertNotification</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="mudancaBateria">Alerta de Mudança de Bateria</string>
+    <string name="modoAviao">Alerta de Modo Avião</string>
+    <string name="carregadorConectado">Alerta de Carregador Conectado</string>
+    <string name="carregadorDesconectado">Alerta de Carregador Desconectado</string>
+</resources>
