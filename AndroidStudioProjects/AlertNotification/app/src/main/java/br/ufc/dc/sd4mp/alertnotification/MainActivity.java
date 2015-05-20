@@ -1,11 +1,15 @@
 package br.ufc.dc.sd4mp.alertnotification;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -44,12 +48,14 @@ public class MainActivity extends ActionBarActivity {
 
         if (id == R.id.mudancaBateriaCheckBox) {
             if (checked) {
-
+//                iniciarBRMudancaBateria(view);
             }
         }
         if (id == R.id.modoAviaoCheckBox) {
             if (checked) {
-
+                Intent modoAviaoIntent = new Intent();
+                modoAviaoIntent.setAction("android.intent.action.AIRPLANE_MODE");
+                sendBroadcast(modoAviaoIntent);
             }
         }
         if (id == R.id.carregadorConectadoCheckBox) {
@@ -62,5 +68,11 @@ public class MainActivity extends ActionBarActivity {
 
             }
         }
+    }
+
+    public void iniciarBRMudancaBateria(View view) {
+        Intent mudancaBateriaIntent = new Intent();
+        mudancaBateriaIntent.setAction("android.intent.action.BATTERY_CHANGED");
+        sendBroadcast(mudancaBateriaIntent);
     }
 }
