@@ -1,7 +1,11 @@
 package br.ufc.dc.sd4mp.alertnotification;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,31 +52,27 @@ public class MainActivity extends ActionBarActivity {
 
         if (id == R.id.mudancaBateriaCheckBox) {
             if (checked) {
-//                iniciarBRMudancaBateria(view);
+                Intent intent = new Intent("br.ufc.dc.sd4mp.MUDANCA_BATERIA");
+                sendBroadcast(intent);
             }
         }
         if (id == R.id.modoAviaoCheckBox) {
             if (checked) {
-                Intent modoAviaoIntent = new Intent();
-                modoAviaoIntent.setAction("android.intent.action.AIRPLANE_MODE");
-                sendBroadcast(modoAviaoIntent);
+                Intent intent = new Intent("br.ufc.dc.sd4mp.MODO_AVIAO");
+                sendBroadcast(intent);
             }
         }
         if (id == R.id.carregadorConectadoCheckBox) {
             if (checked) {
-
+                Intent intent = new Intent("br.ufc.dc.sd4mp.CARREGADOR_CONECTADO");
+                sendBroadcast(intent);
             }
         }
         if (id == R.id.carregadorDesconectadoCheckBox) {
             if (checked) {
-
+                Intent intent = new Intent("br.ufc.dc.sd4mp.CARREGADOR_DESCONECTADO");
+                sendBroadcast(intent);
             }
         }
-    }
-
-    public void iniciarBRMudancaBateria(View view) {
-        Intent mudancaBateriaIntent = new Intent();
-        mudancaBateriaIntent.setAction("android.intent.action.BATTERY_CHANGED");
-        sendBroadcast(mudancaBateriaIntent);
     }
 }

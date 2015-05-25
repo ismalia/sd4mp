@@ -5,11 +5,9 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
-public class BRMudancaBateria extends BroadcastReceiver {
-    public BRMudancaBateria() {
+public class BRCarregadorDesconectado extends BroadcastReceiver {
+    public BRCarregadorDesconectado() {
     }
 
     @Override
@@ -19,8 +17,8 @@ public class BRMudancaBateria extends BroadcastReceiver {
         Notification.Builder builder = new Notification.Builder(context);
         builder.setTicker("Status");
         builder.setContentTitle("Alerta!");
-        builder.setContentText("Mudança de bateria!");
-        builder.setSmallIcon(android.R.drawable.stat_notify_error);
+        builder.setContentText("Carregador desconectado!");
+        builder.setSmallIcon(android.R.drawable.ic_lock_idle_charging);
         Notification notification = builder.build();
         manager.notify(R.string.app_name, notification);
     }
