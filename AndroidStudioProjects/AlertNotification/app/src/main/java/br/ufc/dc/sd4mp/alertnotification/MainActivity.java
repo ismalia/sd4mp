@@ -77,6 +77,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void checkStatus() {
-        
+        CheckBox mudancaBateriaCB = (CheckBox) findViewById(R.id.mudancaBateriaCheckBox);
+        CheckBox modoAviaoCB = (CheckBox) findViewById(R.id.modoAviaoCheckBox);
+        CheckBox carregadorConectadoCB = (CheckBox) findViewById(R.id.carregadorConectadoCheckBox);
+        CheckBox carregadorDesconectadoCB = (CheckBox) findViewById(R.id.carregadorDesconectadoCheckBox);
+
+        // Mudança de bateria
+
+        // Modo avião
+
+        // Carregador conectado
+
+        // Carregador desconectado
     }
 }
